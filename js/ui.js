@@ -171,7 +171,7 @@ $(function () {
 	var videoLastTime = 0;
 	var videoOffset = 0;
 	var videoLoopDistance = 0;
-	var videoLoopSpeed = 48;
+	var videoLoopSpeed = 38;
 	var videoLoopDelay = 900;
 	var videoStartTimer = null;
 	var selectedVideoIndex = 0;
