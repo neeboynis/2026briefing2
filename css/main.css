@@ -1,20 +1,5 @@
 @charset "utf-8";
 
-/* Scroll Reveal */
-[data-reveal]{opacity:0; transform:translate3d(0, 36px, 0); transition:opacity .8s ease, transform .9s cubic-bezier(.16, 1, .3, 1);}
-[data-reveal="fade"]{transform:none;}
-[data-reveal].is-visible{opacity:1; transform:none;}
-
-@media (prefers-reduced-motion: reduce){
-	[data-reveal]{opacity:1 !important; transform:none !important; transition:none !important;}
-	.hero_bg .cloud,
-	.hero_bg .leaf,
-	.hero_illur .hero_city,
-	.hero_illur .hero_people{animation:none !important;}
-	.hero_illur .hero_city{opacity:.5; transform:none !important;}
-	.hero_illur .hero_people{opacity:1; transform:translateX(-50%) !important;}
-}
-
 /* Common */
 .inner{max-width:1380px; margin:0 auto; padding:0 30px;}
 .blind{position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
@@ -36,6 +21,23 @@
 	.inner{padding: 0 20px;}
 	[class*="_sec"]{padding: 70px 0;}
 }
+
+/* Scroll Reveal */
+[data-reveal]{opacity:0; transform:translate3d(0, 36px, 0); transition:opacity .8s ease, transform .9s cubic-bezier(.16, 1, .3, 1);}
+[data-reveal="fade"]{transform:none;}
+[data-reveal].is-visible{opacity:1; transform:none;}
+
+/* Motion Accessibility */
+@media (prefers-reduced-motion: reduce){
+	[data-reveal]{opacity:1 !important; transform:none !important; transition:none !important;}
+	.hero_bg .cloud,
+	.hero_bg .leaf,
+	.hero_illur .hero_city,
+	.hero_illur .hero_people{animation:none !important;}
+	.hero_illur .hero_city{opacity:.5; transform:none !important;}
+	.hero_illur .hero_people{opacity:1; transform:translateX(-50%) !important;}
+}
+
 
 /* Header */
 header{position:sticky; top:0; left:0; display:flex; align-items:center; justify-content:space-between; width:100%; height:84px; padding:0 40px; border-bottom:1px solid #EAEAEA; background:#fff; z-index:99;}
