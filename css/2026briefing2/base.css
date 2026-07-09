@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/* Pretendard */
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-weight: 400;
+	src: url('font/Pretendard-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-weight: 500;
+	src: url('font/Pretendard-Medium.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-weight: 600;
+	src: url('font/Pretendard-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-weight: 700;
+	src: url('font/Pretendard-Bold.woff2') format('woff2');
+}
+
+/* Supersize */
+@font-face {
+	font-family: 'Supersize';
+	font-style: normal;
+	font-weight: 800;
+	src: url('font/210Supersize-ExtraBold.woff2') format('woff2');
+}
+
+/* Paperlogy */
+@font-face {
+	font-family: 'Paperlogy';
+	font-style: normal;
+	font-weight: 500;
+	src: url('font/Paperlogy-5Medium.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Paperlogy';
+	font-style: normal;
+	font-weight: 600;
+	src: url('font/Paperlogy-6SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Paperlogy';
+	font-style: normal;
+	font-weight: 700;
+	src: url('font/Paperlogy-7Bold.woff2') format('woff2');
+}
+
+*, *::before, *::after {box-sizing: border-box;padding: 0; margin: 0; border: 0;}
+
+/* Base */
+html { background: #fff; height: 100%; overflow-anchor: none;}
+html, body{margin:0; padding:0; -webkit-text-size-adjust:none; -webkit-font-smoothing:antialiased; word-wrap:normal; word-break:keep-all; }
+html, body, input, textarea, select, table, button{font-family:'Pretendard', 'malgun gothic', dotum, sans-serif; font-size:17px; color:#333; letter-spacing:-.5px;}
+button { cursor: pointer; border: 0; background: none;}
+
+img{margin:0; padding:0; border:none; vertical-align:top; max-width: 100%;}
+
+a, a:link, a:visited{color:#333; text-decoration: none;}
+a:hover{text-decoration: none;}
+
+:focus-visible {outline: 2px dotted #333;}
+
+ul{list-style:none; margin:0; padding:0;}
+ol{margin:0; padding:0 0 0 1em;}
+ol > li{list-style-type: decimal;}
+dl,dt,dd{margin:0; padding:0;}
+
+h1,h2,h3,h4,h5,h6{clear:both;margin:0;padding:0; font-weight:600;}
+
+em{font-style:normal;}
+small{font-style:normal;}
+p{margin:0; padding:0;}
+strong, b{font-weight:600;}
+abbr[title]{text-decoration:none;}
+caption, legend, .sr_only, .hidden, .blind, .IR, .hide{overflow: hidden;position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0 none;clip:rect(0, 0, 0, 0)}
+iframe{margin:0;padding:0;border:none;}
+
+hr{display:none;}
+
+table{border-spacing:0; border-collapse:collapse;}
+table caption{width:0; height:0; overflow:hidden;}
+table,th,td{margin:0; padding:0; border:none;}
+th{font-weight:500;}
+
+/* Form */
+form, fieldset, legend{margin:0; padding:0; border:0;}
+fieldset legend{width:0; height:0; overflow:hidden;}
+
