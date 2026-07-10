@@ -464,6 +464,9 @@ html.mo_nav_open{overflow:hidden;}
 /* Footer */
 footer { background-color: #262B2B; color:#fff;}
 footer :focus-visible {outline: 2px dotted #fff;}
+footer address,
+footer address *{color:#fff; -webkit-text-fill-color:#fff;}
+footer a[x-apple-data-detectors]{color:#fff !important; -webkit-text-fill-color:#fff !important;}
 footer .inner{padding: 60px 40px;}
 footer .foot_logo { margin:0 0 30px 0; }
 footer .foot_logo img { width:200px; }
