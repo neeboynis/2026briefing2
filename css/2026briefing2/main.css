@@ -185,8 +185,8 @@ html.mo_nav_open{overflow:hidden;}
 }
 
 @media (max-width: 640px){
-	.hero{min-height:calc(100svh - 220px); margin:12px; border-radius:28px;}
-	.hero_content{gap: 16px; padding: 3.8rem 16px;}
+	.hero{min-height:calc(100svh - 160px); margin:12px; border-radius:28px;}
+	.hero_content{gap: 16px; padding: 4rem 16px 3.8rem;}
 	.hero_content .sub_tit{font-size: 17px;}
 	.hero_content .hero_title{font-size: clamp(34px, 11vw, 48px);line-height: 1.4;}
 	.hero_content .hero_title span{display: block;}
