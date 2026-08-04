@@ -162,7 +162,7 @@ html.mo_nav_open{overflow:hidden;}
 /* Hero - Responsive */
 @media (max-width: 1400px){
 	.hero{min-height: calc(100svh - 144px);}
-	.hero_content{margin: auto; padding:6rem 20px;}
+	.hero_content{margin: auto; padding:7rem 20px 6rem;}
 	.hero_content .hero_title{font-size: clamp(46px, 6.4vw, 66px);}
 	.hero_illur{height: min(300px, 22vw);}
 	.hero_illur .hero_people{width: min(1000px, 80vw); aspect-ratio: 1000 / 436; background-image: url('../../images/2026briefing2/hero_people_m.png');}
@@ -356,7 +356,7 @@ html.mo_nav_open{overflow:hidden;}
 	.pdf_down{gap:8px; padding:12px 21px 12px 71px;}
 	.pdf_down::after{top: 12px; left: 20px; width:42px; height:42px;}
 	.pdf_down a{min-width: 153px; padding: 10px 40px 11px 20px; font-size:16px;}
-	.pdf_down align-items: ;::after{top:11px; right:22px; width:16px; height:17px;}
+	.pdf_down a::after{top:11px; right:22px; width:16px; height:17px;}
 }
 
 @media (max-width:640px){
@@ -369,7 +369,7 @@ html.mo_nav_open{overflow:hidden;}
 	.news_item .news_head{padding:2px 92px 18px 0;}
 	.news_item .news_date{margin-top:10px; font-size:14px;}
 	.news_item .news_date::before{width:17px; height:17px;}
-	.news_item .news_body{margin:18px 0 24px; font-size:15px; max-height:204px;}
+	.news_item .news_body{margin:18px 0 24px; font-size:15px; max-height:186px;}
 	.news_item .more_btn{padding:10px 20px; font-size:14px;}
 }
 
