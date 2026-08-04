@@ -177,29 +177,48 @@ $(function () {
 	var selectedVideoIndex = 0;
 	var activeDotIndex = 0;
 	var reduceMotion = isReducedMotion();
+	var $realThumbSlides = null;
+	var loopClonesActive = null;
 
 	function videoSlideClone(swiper) {
 		var $wrapper = $(swiper.el).find('.swiper-wrapper');
 		var $slides = $wrapper.children('.swiper-slide');
-		var minSlides;
-		var cloneIndex = 0;
 
 		if (!$wrapper.length || !$slides.length) return;
 
 		videoLoopTotal = $slides.length;
-		minSlides = Math.max(videoLoopTotal * 4, 16);
 
 		$slides.each(function (index) {
 			$(this).attr('data-video-index', index);
 		});
 
-		while ($wrapper.children().length < minSlides) {
-			$slides.eq(cloneIndex % videoLoopTotal).clone(false).attr({
-				'data-loop-clone': 'true',
-				'aria-hidden': 'true'
-			}).appendTo($wrapper);
-			cloneIndex++;
+		$realThumbSlides = $slides.clone(false);
+	}
+
+	function rebuildThumbSlides(withClones) {
+		if (!thumbsSwiper || !$realThumbSlides || !$realThumbSlides.length || withClones === loopClonesActive) return;
+
+		var $wrapper = $(thumbsSwiper.el).find('.swiper-wrapper');
+		var minSlides = Math.max(videoLoopTotal * 4, 16);
+		var cloneIndex = 0;
+
+		$wrapper.empty().append($realThumbSlides.clone(false));
+
+		if (withClones) {
+			while ($wrapper.children().length < minSlides) {
+				$realThumbSlides.eq(cloneIndex % videoLoopTotal).clone(false).attr({
+					'data-loop-clone': 'true',
+					'aria-hidden': 'true'
+				}).appendTo($wrapper);
+				cloneIndex++;
+			}
 		}
+
+		loopClonesActive = withClones;
+		videoOffset = 0;
+		thumbsSwiper.update();
+		thumbsSwiper.setTransition(0);
+		thumbsSwiper.setTranslate(0);
 	}
 
 	function renderPagination(index, className) {
@@ -229,6 +248,28 @@ $(function () {
 	function getSlidePosition(slide) {
 		if (!thumbsSwiper || !slide) return 0;
 		return thumbsSwiper.isHorizontal() ? slide.offsetLeft : slide.offsetTop;
+	}
+
+	function isLoopNeeded() {
+		if (!thumbsSwiper || !videoLoopTotal) return false;
+
+		var perView = thumbsSwiper.params.slidesPerView;
+		if (typeof perView !== 'number') perView = videoLoopTotal;
+
+		return videoLoopTotal > perView;
+	}
+
+	function syncThumbLoopState() {
+		var needed = isLoopNeeded();
+
+		stopThumbLoop();
+		rebuildThumbSlides(needed);
+		updateVideoLoopDistance();
+		setPaginationActive(activeDotIndex);
+		setThumbActive(selectedVideoIndex);
+		$videoPagination.toggle(needed);
+
+		if (needed && videoVisible && !videoHover) startThumbLoop();
 	}
 
 	function updateVideoLoopDistance() {
@@ -288,7 +329,7 @@ $(function () {
 	}
 
 	function startThumbLoop(delay) {
-		if (reduceMotion || !videoVisible || videoHover || videoLoopRunning || videoStartTimer) return;
+		if (reduceMotion || !videoVisible || videoHover || videoLoopRunning || videoStartTimer || !isLoopNeeded()) return;
 
 		delay = delay || 0;
 		if (delay > 0) {
@@ -372,26 +413,16 @@ $(function () {
 		on: {
 			beforeInit: videoSlideClone,
 			afterInit: function () {
-				updateVideoLoopDistance();
-				setPaginationActive(0);
-				setThumbActive(0);
+				syncThumbLoopState();
 			},
 			resize: function () {
-				updateVideoLoopDistance();
-				setPaginationActive(activeDotIndex);
+				syncThumbLoopState();
 			},
 			breakpoint: function () {
-				setTimeout(function () {
-					updateVideoLoopDistance();
-					setPaginationActive(activeDotIndex);
-				}, 50);
+				setTimeout(syncThumbLoopState, 50);
 			}
 		}
 	});
-
-	updateVideoLoopDistance();
-	setPaginationActive(0);
-	setThumbActive(0);
 
 	var mainSwiper = new Swiper('.video_main_swiper', {
 		effect: 'fade',
@@ -474,6 +505,35 @@ $(function () {
 		a11y: {
 			prevSlideMessage: '이전 보도자료',
 			nextSlideMessage: '다음 보도자료'
+		},
+		on: {
+			lock: function () {
+				$('.news_cont').addClass('is-nav-locked');
+			},
+			unlock: function () {
+				$('.news_cont').removeClass('is-nav-locked');
+			}
+		}
+	});
+});
+
+/* Event */
+$(function () {
+	if (!$('.event_swiper').length || typeof Swiper === 'undefined') return;
+
+	new Swiper('.event_swiper', {
+		loop: true,
+		speed: 500,
+		spaceBetween: 0,
+		grabCursor: true,
+		watchOverflow: true,
+		navigation: {
+			prevEl: '.event_prev',
+			nextEl: '.event_next'
+		},
+		a11y: {
+			prevSlideMessage: '이전 이벤트',
+			nextSlideMessage: '다음 이벤트'
 		}
 	});
 });
