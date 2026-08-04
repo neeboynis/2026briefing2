@@ -196,7 +196,7 @@ html.mo_nav_open{overflow:hidden;}
 }
 
 @media (max-width: 420px){
-	.hero_content{padding: 4.5rem 16px 2rem;}
+	.hero_content{padding: 4.5rem 16px 2.5rem;}
 	.hero_content .hero_title{font-size: clamp(31px, 10.5vw, 42px);}
 	.hero_illur{height: 36vw;}
 }
