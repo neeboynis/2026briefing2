@@ -113,7 +113,7 @@ html.mo_nav_open{overflow:hidden;}
 
 @media (max-width:768px){
 	header{height:64px; padding:0 16px;}
-	header .logo2{display:none;}
+	header .logo_wrap .logo2{width: 60px;}
 	header .gnb,
 	header .link_btn{display:none;}
 	header .mo_menu_btn{display:flex;}
