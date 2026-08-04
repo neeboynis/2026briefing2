@@ -181,7 +181,7 @@ html.mo_nav_open{overflow:hidden;}
 
 	.hero_illur .hero_city_left{width: 100vw;}
 	.hero_illur .hero_city_right{width: 58vw;}
-	.hero_illur .hero_people{width: min(900px, 90vw);}
+	.hero_illur .hero_people{width: min(900px, 108vw);}
 }
 
 @media (max-width: 640px){
